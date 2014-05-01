@@ -36,6 +36,8 @@ bing_verify:
 # Links to include in top navigation
 # For external links add external: true
 links:
+  - title: Home
+    url: http://manasvigupta.com
   - title: About
     url: /about/
   - title: Blog

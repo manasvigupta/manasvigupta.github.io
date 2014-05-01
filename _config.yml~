@@ -1,8 +1,7 @@
 title:            Manasvi Gupta
 description:      This blog documents my tech journey.
 # Your site's domain goes here. Leave localhost server or blank when working locally.
-#url:              http://localhost:4000
-url:              manasvigupta.com
+url:              http://localhost:4000
 disqus_shortname: manasvigupta
 
 # Owner/author information

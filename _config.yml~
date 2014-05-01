@@ -3,7 +3,7 @@ description:      This blog documents my tech journey.
 # Your site's domain goes here. Leave localhost server or blank when working locally.
 #url:              http://localhost:4000
 #this is test
-#url:              manasvigupta.com
+url:              manasvigupta.com
 disqus_shortname: manasvigupta
 
 # Owner/author information

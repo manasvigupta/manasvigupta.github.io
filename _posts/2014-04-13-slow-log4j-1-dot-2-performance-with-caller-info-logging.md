@@ -72,7 +72,7 @@ To know more, read this [blog post.]
 To retrieve caller details, log4j executes in following sequence -
 
 <figure>
-    <a href="https://github.com/github/training-materials/raw/master/images/professortocat.png"><img src="/images/log4j_sequence.png"></a>
+    <a href="https://github.com/manasvigupta/manasvigupta.github.io/raw/master/images/log4j_sequence.png"><img src="/images/log4j_sequence.png"></a>
 </figure>
 
 <br/>

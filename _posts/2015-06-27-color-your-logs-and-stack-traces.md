@@ -50,7 +50,7 @@ Default = 39
 {% endhighlight %}
 
 <br/>
-For the color codes to take effect, they need to be preceded by the “start” escape character, **\033[**, and be followed by the “end” escape character, **m**.
+For the color codes to take effect, they need to be preceded by the “start” escape character, **\033[** and be followed by the “end” escape character **m**.
 
 <br/>
 Therefore, to display a message in red, we would type the following:

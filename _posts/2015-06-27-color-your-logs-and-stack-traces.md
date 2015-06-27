@@ -63,7 +63,7 @@ Therefore, to display a message in red, we would type the following:
 
 By using this information, I created following AWK script to highlight logs in console when we "tail" application logs.
 
-{% highlight bash %}
+{% highlight java %}
 tail -f application.log | awk '
 
 # Initialize variables with color to be used in terminal
@@ -90,6 +90,7 @@ tail -f application.log | awk '
 {% endhighlight %}
 
 
+<br/>
 Enjoy !
 
 

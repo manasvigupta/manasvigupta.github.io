@@ -59,7 +59,7 @@ Therefore, to display a message in red, we would type the following:
 \033[31m
 {% endhighlight %}
 
-# How others solve this problem
+### How others solve this problem
 One company [solved] this problem by enhancing their Logback loggig to add colors while application logs are being generated.
 
 ### My solution to coloring logs in Unix terminal

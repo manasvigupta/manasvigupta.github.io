@@ -69,7 +69,7 @@ One company [solved] this problem by enhancing their Logback loggig to add color
 
 My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that it can be customized at runtime by user.
 
-{% highlight css %}
+{% highlight bash %}
 tail -f application.log | awk '
 
 # Initialize variables with color to be used in terminal

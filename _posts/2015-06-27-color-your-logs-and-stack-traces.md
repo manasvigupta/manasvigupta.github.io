@@ -69,7 +69,7 @@ One company [solved] this problem by enhancing their Logback logging to add colo
 
 My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that script can be customized by user.
 
-{% highlight bash %}
+{% highlight text %}
 tail -f application.log | awk '
 
 # Initialize variables with color to be used in terminal
@@ -88,8 +88,7 @@ tail -f application.log | awk '
 # Identify ERRORs, including full stack traces and show in Red  
   /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED $0; next}
   
-# Anything not matching should be displayed with DEFAULT terminal 
-# settings
+# Anything not matching should be displayed with DEFAULT terminal settings
   // {print}
 '
 

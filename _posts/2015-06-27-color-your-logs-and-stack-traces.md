@@ -5,10 +5,10 @@ description: "How to color your logs using tail and AWK on command line"
 modified: 2015-06-27 00:02:36 +0530
 #category: [blog]
 tags: [learning, programming]
-image:
-  feature: texture-feature-06.jpg
-  credit: coffee #17 by Mariantonietta Continenza
-  creditlink: http://www.flickr.com/photos/42897741@N05/3987243989/
+#image:
+#  feature: texture-feature-06.jpg
+#  credit: coffee #17 by Mariantonietta Continenza
+#  creditlink: http://www.flickr.com/photos/42897741@N05/3987243989/
 comments: true
 share: 
 ---

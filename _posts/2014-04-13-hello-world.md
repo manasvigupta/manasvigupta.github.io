@@ -13,9 +13,9 @@ comments: true
 share: 
 ---
 
-<br/>
-
 Through this blog I will be documenting my technical learning.
+
+<br/>
 
 
 

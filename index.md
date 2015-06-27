@@ -7,4 +7,3 @@ image:
   credit: Texture Lovers
   creditlink: http://texturelovers.com
 ---
-

@@ -66,14 +66,12 @@ By using this information, I created following AWK script to highlight logs in c
 {% highlight css %}
 tail -f application.log | awk '
 
-# initialize variables with color to be used in terminal
+# Initialize variables with color to be used in terminal
   BEGIN { RED="\033[0;31m"; 
           BLACK="\033[39m"; 
           YELLOW="\033[33m"; 
           LIGHT_GREEN="\033[1;32m"
   }
-
-# use pattern matching to identify log level type
 
 # Identify WARNings and show in Yellow
   /WARN/ {print YELLOW $0; next}

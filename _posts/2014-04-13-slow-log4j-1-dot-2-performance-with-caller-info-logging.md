@@ -5,10 +5,10 @@ description: "Kids, don't enable caller logging in Production!"
 modified: 2014-04-13 00:02:36 +0530
 #category: [blog]
 tags: [learning, programming]
-image:
-  feature: texture-feature-06.jpg
-  credit: coffee #17 by Mariantonietta Continenza
-  creditlink: http://www.flickr.com/photos/42897741@N05/3987243989/
+#image:
+#  feature: texture-feature-06.jpg
+#  credit: coffee #17 by Mariantonietta Continenza
+#  creditlink: http://www.flickr.com/photos/42897741@N05/3987243989/
 comments: true
 share: 
 ---

@@ -61,13 +61,13 @@ Therefore, to display a message in red, we would type the following:
 \033[31m
 {% endhighlight %}
 
-### How others solve this problem
+### How others solved this problem
 
-One company [solved] this problem by enhancing their Logback loggig to add colors while application logs are being generated.
+One company [solved] this problem by enhancing their Logback logging to add colors while application logs are being generated.
 
 ### My solution to coloring logs in Unix terminal
 
-My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that it can be customized at runtime by user.
+My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that script can be customized by user.
 
 {% highlight bash %}
 tail -f application.log | awk '
@@ -97,7 +97,12 @@ tail -f application.log | awk '
 
 
 <br/>
-Enjoy !
+And Unix terminal looks like this after running above command
+
+
+<figure>
+    <a href="https://github.com/manasvigupta/manasvigupta.github.io/raw/master/images/command-line.png"><img src="/images/command-line.png"></a>
+</figure>
 
 
 [solved]:http://engineering.wix.com/2015/05/21/color-your-logs-and-stack-traces/

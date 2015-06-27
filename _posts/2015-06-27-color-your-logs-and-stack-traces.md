@@ -25,8 +25,16 @@ Essentially, solution is to add colors to our logs to facilitate the readability
 
 Before jumping into the details of the implementation, let’s first understand how the coloring works in Unix. An easy way to understand it is to type the following in a Unix terminal:
 
+<pre style="margin-bottom: 18px; font-family: 'courier', serif; background-color: #000000; color: #ffffff;">
+    echo -e "\033[31m   Exception log    \033[39m"
+</pre>
+
 <br/>
 The result is:
+
+<pre style="margin-bottom: 18px; font-family: 'courier', serif; background-color: #000000; color: #ff0000;">
+    Exception log
+</pre>
 
 <br/>
 What happened?

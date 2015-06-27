@@ -19,7 +19,7 @@ Logs are not the only way we monitor our systems, but they play an important rol
 One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and error-prone.
 
 <br/>
-My solution was to add colors to our logs to facilitate the readability.   Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
+Essentially, solution is to add colors to our logs to facilitate the readability.   Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
 
 ### How coloring works in Unix terminals
 
@@ -59,9 +59,12 @@ Therefore, to display a message in red, we would type the following:
 \033[31m
 {% endhighlight %}
 
+# How others solve this problem
+One company [solved] this problem by enhancing their Logback loggig to add colors while application logs are being generated.
+
 ### My solution to coloring logs in Unix terminal
 
-By using this information, I created following AWK script to highlight logs in console when we "tail" application logs.
+My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that it can be customized at runtime by user.
 
 {% highlight java %}
 tail -f application.log | awk '
@@ -94,3 +97,4 @@ tail -f application.log | awk '
 Enjoy !
 
 
+[solved]:http://engineering.wix.com/2015/05/21/color-your-logs-and-stack-traces/

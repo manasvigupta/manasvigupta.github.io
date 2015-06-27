@@ -53,10 +53,14 @@ Therefore, to display a message in red, we would type the following:
 
 By using this information, I created following AWK script to highlight logs in console while we "tail" our logs.
 
-{% highlight java %}
+{% highlight css %}
 tail -f async.log | awk '
 
-  BEGIN { RED="\033[0;31m"; BLACK="\033[39m"; YELLOW="\033[33m"; LIGHT_GREEN="\033[1;32m"}
+  BEGIN { RED="\033[0;31m"; 
+          BLACK="\033[39m"; 
+          YELLOW="\033[33m"; 
+          LIGHT_GREEN="\033[1;32m"
+  }
 
   /WARN/ {print YELLOW $0; next}
   /INFO/ {print LIGHT_GREEN $0; next}

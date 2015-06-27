@@ -107,7 +107,6 @@ alias colorlog="awk 'BEGIN { RED=\"\033[0;31m\"; BLACK=\"\033[39m\"; YELLOW=\"\0
 "
 {% endhighlight %}
 
-<br/>
 and call it like this:
 
 <pre style="margin-bottom: 18px; font-family: 'courier', serif; background-color: #000000; color: #ffffff;">

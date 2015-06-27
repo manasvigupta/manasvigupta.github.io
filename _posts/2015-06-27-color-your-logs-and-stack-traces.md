@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Color Your Logs And Stack Traces"
-description: "How to color your logs using tail and AWK on command line"
+description: "How to color application logs on Unix terminal  using tail and AWK"
 modified: 2015-06-27 00:02:36 +0530
 #category: [blog]
 tags: [learning, programming]
@@ -66,17 +66,29 @@ By using this information, I created following AWK script to highlight logs in c
 {% highlight css %}
 tail -f async.log | awk '
 
+# initialize variables with color to be used in terminal
   BEGIN { RED="\033[0;31m"; 
           BLACK="\033[39m"; 
           YELLOW="\033[33m"; 
           LIGHT_GREEN="\033[1;32m"
   }
 
+# use pattern matching to identify log level type
+
+# Identify WARNings and show in Yellow
   /WARN/ {print YELLOW $0; next}
+  
+# Identify  INFOrmatin and show in Green
   /INFO/ {print LIGHT_GREEN $0; next}
+  
+# Identify ERRORs, including full stack traces and show in Red  
   /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED $0; next}
+  
+# Anything not matching as above should be displayed using DEFAULT terminal 
+# settings
   // {print}
 '
+
 {% endhighlight %}
 
 

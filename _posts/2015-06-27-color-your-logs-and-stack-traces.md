@@ -34,6 +34,7 @@ Exception log
 
 What happened?
 
+<br/>
 First, it’s important to know that every color has a corresponding ANSI color code:
 
 {% highlight css %}
@@ -45,12 +46,17 @@ Yellow = 33
 Default = 39
 {% endhighlight %}
 
+<br/>
 For the color codes to take effect, they need to be preceded by the “start” escape character, \033[, and be followed by the “end” escape character, m.
 
+<br/>
 Therefore, to display a message in red, we would type the following:
 
+{% highlight css %}
 \033[31m
+{% endhighlight %}
 
+<br/>
 By using this information, I created following AWK script to highlight logs in console while we "tail" our logs.
 
 {% highlight css %}

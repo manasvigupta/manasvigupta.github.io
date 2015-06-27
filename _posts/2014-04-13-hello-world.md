@@ -12,5 +12,5 @@ comments: true
 share: 
 ---
 
-
+Hey this is my new blog. Enjoy !
 

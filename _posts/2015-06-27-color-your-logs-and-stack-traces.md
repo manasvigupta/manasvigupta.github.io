@@ -42,7 +42,7 @@ What happened?
 <br/>
 First, it’s important to know that every color has a corresponding ANSI color code:
 
-{% highlight css %}
+{% highlight %}
 Black = 30
 Red = 31
 Green = 32
@@ -57,11 +57,12 @@ For the color codes to take effect, they need to be preceded by the “start” 
 <br/>
 Therefore, to display a message in red, we would type the following:
 
-{% highlight css %}
+{% highlight %}
 \033[31m
 {% endhighlight %}
 
 ### How others solve this problem
+
 One company [solved] this problem by enhancing their Logback loggig to add colors while application logs are being generated.
 
 ### My solution to coloring logs in Unix terminal

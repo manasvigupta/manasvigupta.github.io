@@ -82,7 +82,7 @@ tail -f application.log | awk '
 # Identify ERRORs, including full stack traces and show in Red  
   /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED $0; next}
   
-# Anything not matching as above should be displayed using DEFAULT terminal 
+# Anything not matching should be displayed with DEFAULT terminal 
 # settings
   // {print}
 '

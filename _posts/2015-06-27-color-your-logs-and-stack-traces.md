@@ -34,7 +34,7 @@ What happened?
 <br/>
 First, it’s important to know that every color has a corresponding ANSI color code:
 
-{% highlight %}
+{% highlight css %}
 Black = 30
 Red = 31
 Green = 32
@@ -49,7 +49,7 @@ For the color codes to take effect, they need to be preceded by the “start” 
 <br/>
 Therefore, to display a message in red, we would type the following:
 
-{% highlight %}
+{% highlight css %}
 \033[31m
 {% endhighlight %}
 
@@ -61,7 +61,7 @@ One company [solved] this problem by enhancing their Logback loggig to add color
 
 My solution was slightly different. I created an AWK script with pattern matching that can highlight logs when we "tail" application logs. Added benefit is that it can be customized at runtime by user.
 
-{% highlight %}
+{% highlight css %}
 tail -f application.log | awk '
 
 # Initialize variables with color to be used in terminal

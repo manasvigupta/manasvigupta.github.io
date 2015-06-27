@@ -16,7 +16,7 @@ share:
 Logs are not the only way we monitor our systems, but they play an important role, both for troubleshooting purposes and to check the general health of an application.
 
 <br/>
-One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and onerous.
+One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and error-prone.
 
 <br/>
 My solution was to add colors to our logs to facilitate the readability.   Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
@@ -28,10 +28,12 @@ Before jumping into the details of the implementation, let’s first understand 
 echo -e "\033[31m  Exception log  \033[39m"
 {% endhighlight %}
 
+<br/>
 The result is:
 
 Exception log
 
+<br/>
 What happened?
 
 <br/>
@@ -47,7 +49,7 @@ Default = 39
 {% endhighlight %}
 
 <br/>
-For the color codes to take effect, they need to be preceded by the “start” escape character, \033[, and be followed by the “end” escape character, m.
+For the color codes to take effect, they need to be preceded by the “start” escape character, **\033[**, and be followed by the “end” escape character, **m**.
 
 <br/>
 Therefore, to display a message in red, we would type the following:

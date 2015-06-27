@@ -5,10 +5,10 @@ description: "How to add Sun jars to your m2 repository"
 modified: 2014-04-13 20:46:05 +0530
 #category: []
 tags: [programming, learning]
-image:
-  feature: texture-feature-04.jpg
-  credit: Texture Lovers
-  creditlink: http://texturelovers.com
+#image:
+#  feature: texture-feature-04.jpg
+#  credit: Texture Lovers
+#  creditlink: http://texturelovers.com
 comments: true
 share: 
 ---

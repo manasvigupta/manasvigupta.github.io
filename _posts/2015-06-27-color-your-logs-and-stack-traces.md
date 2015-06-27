@@ -25,7 +25,7 @@ My solution was to add colors to our logs to facilitate the readability.   Would
 
 Before jumping into the details of the implementation, let’s first understand how the coloring works in Unix. An easy way to understand it is to type the following in a Unix terminal:
 
-{% highlight css %}
+{% highlight bash %}
 echo -e "\033[31m  Exception log  \033[39m"
 {% endhighlight %}
 
@@ -63,7 +63,7 @@ Therefore, to display a message in red, we would type the following:
 
 By using this information, I created following AWK script to highlight logs in console when we "tail" application logs.
 
-{% highlight css %}
+{% highlight bash %}
 tail -f application.log | awk '
 
 # Initialize variables with color to be used in terminal

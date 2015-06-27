@@ -13,9 +13,12 @@ comments: true
 share: 
 ---
 
-Logs are not the only way we monitor our systems, but they play an important role, both for troubleshooting purposes and to check the general health of an application. 
+Logs are not the only way we monitor our systems, but they play an important role, both for troubleshooting purposes and to check the general health of an application.
+
+<br/>
 One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and onerous.
 
+<br/>
 An easy way to understand it is to type the following in a Unix terminal:
 
 {% highlight css %}
@@ -47,7 +50,7 @@ Therefore, to display a message in red, we would type the following:
 
 By using this information, I created following AWK script to highlight logs in console while we "tail" our logs.
 
-{% highlight css %}
+{% highlight java %}
 tail -f async.log | awk '
 
   BEGIN { RED="\033[0;31m"; BLACK="\033[39m"; YELLOW="\033[33m"; LIGHT_GREEN="\033[1;32m"}

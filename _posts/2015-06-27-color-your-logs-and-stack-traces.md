@@ -22,7 +22,7 @@ One of the problems we had was the readability of logs. When you know what youâ€
 An easy way to understand it is to type the following in a Unix terminal:
 
 {% highlight css %}
-echo -e "\033[31mException log\033[39m"
+echo -e "\033[31m  Exception log  \033[39m"
 {% endhighlight %}
 
 The result is:

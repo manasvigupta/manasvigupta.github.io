@@ -13,8 +13,7 @@ comments: true
 share: 
 ---
 
-Logs are not the only way we monitor our systems, but they play an important role, both for troubleshooting purposes and to check the general health of an application.
-
+Logs are not the only way we monitor our systems, but they play an important role, both for troubleshooting purposes and to check the general health of an application. 
 One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and onerous.
 
 An easy way to understand it is to type the following in a Unix terminal:

@@ -19,9 +19,9 @@ Logs are not the only way we monitor our systems, but they play an important rol
 One of the problems we had was the readability of logs. When you know what you’re looking for in a log, it is easy to search for an exception. But when you don’t know what is wrong, going through gigabytes of logs in white text on a black background can be very time consuming and onerous.
 
 <br/>
+My solution was to add colors to our logs to facilitate the readability.   Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
 
-My solution is to add colors to our logs to facilitate the readability. Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
-
+<br/>
 Before jumping into the details of the implementation, let’s first understand how the coloring works in Unix. An easy way to understand it is to type the following in a Unix terminal:
 
 {% highlight css %}

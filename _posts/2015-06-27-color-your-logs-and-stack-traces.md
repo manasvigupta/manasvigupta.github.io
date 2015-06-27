@@ -59,12 +59,12 @@ Therefore, to display a message in red, we would type the following:
 \033[31m
 {% endhighlight %}
 
-### My solution to color logs
+### My solution to coloring logs in Unix terminal
 
-By using this information, I created following AWK script to highlight logs in console while we "tail" our logs.
+By using this information, I created following AWK script to highlight logs in console when we "tail" application logs.
 
 {% highlight css %}
-tail -f async.log | awk '
+tail -f application.log | awk '
 
 # initialize variables with color to be used in terminal
   BEGIN { RED="\033[0;31m"; 

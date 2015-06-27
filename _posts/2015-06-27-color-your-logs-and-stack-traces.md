@@ -94,6 +94,24 @@ tail -f application.log | awk '
 
 {% endhighlight %}
 
+<br/>
+To avoid re-typing this script, you can add this AWK script in your bash profile as alias, like this: 
+
+{% highlight text %}
+alias colorlog="awk 'BEGIN { RED=\"\033[0;31m\"; BLACK=\"\033[39m\"; YELLOW=\"\033[33m\"; LIGHT_GREEN=\"\033[1;32m\" }
+
+  /WARN/ {print YELLOW \$0; next}
+  /INFO/ {print LIGHT_GREEN \$0; next}
+  /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED \$0; next}
+  // {print}'
+"
+{% endhighlight %}
+
+and call it like this:
+
+<pre style="margin-bottom: 18px; font-family: 'courier', serif; background-color: #000000; color: #ffffff;">
+    tail -f application.log | colorlog
+</pre>
 
 <br/>
 And Unix terminal looks like this after running above command

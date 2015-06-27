@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Maven and Sun jars"
-description: "How to add Sun jars to your m2 repository"
+description: "How to add Sun jars to your maven repository"
 modified: 2014-04-13 20:46:05 +0530
 #category: []
 tags: [programming, learning]
@@ -43,7 +43,7 @@ Common solution to this problem is to exclude these dependencies, as suggested o
 {% endhighlight %}
 
 <br/>
-But, what if you actually need these jars to be present? For e.g.  I needed Sun jars for compiling and debugging log4j source code. You can read more about it [here].
+But, what if you actually need these jars available locally in maven repository ? For e.g.  I needed Sun jars for compiling and debugging log4j source code. You can read more about it [here].
 
 
 ### Handling missing `com.sun.jmx:jmxri`, `com.sun.jdmk:jmxtools`

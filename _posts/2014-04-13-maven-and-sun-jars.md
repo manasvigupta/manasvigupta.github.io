@@ -73,6 +73,6 @@ mvn install:install-file
 
 
 [Stackoverflow]: http://stackoverflow.com/questions/9047949/missing-artifact-com-sun-jdmkjmxtoolsjar1-2-1
-[here]: {% post_url 2014-04-13-slow-log4j-1-dot-2-performance-with-caller-info-logging %}
+[here]: {% post_url 2014-04-14-do-not-enable-caller-location-logging-with-log4j %}
 
 

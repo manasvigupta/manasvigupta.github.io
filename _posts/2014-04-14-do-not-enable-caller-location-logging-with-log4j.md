@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Don't enable caller location logging with Log4j"
+title: "Do not enable caller location logging with Log4j"
 description: "Enabling caller location info (line number, method name, class name and file number) with Log4J is useful, but, causes serious performance issues"
 modified: 2014-04-13 00:02:36 +0530
 #category: [blog]

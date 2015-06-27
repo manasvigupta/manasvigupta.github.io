@@ -21,7 +21,8 @@ One of the problems we had was the readability of logs. When you know what you�
 <br/>
 My solution was to add colors to our logs to facilitate the readability.   Wouldn’t it be great if every level (i.e., info, warning, error) message had a different color? What if we could have different colors in our stack trace to highlight different exceptions?
 
-<br/>
+### How coloring works in Unix terminals
+
 Before jumping into the details of the implementation, let’s first understand how the coloring works in Unix. An easy way to understand it is to type the following in a Unix terminal:
 
 {% highlight css %}
@@ -58,7 +59,8 @@ Therefore, to display a message in red, we would type the following:
 \033[31m
 {% endhighlight %}
 
-<br/>
+### My solution to color logs
+
 By using this information, I created following AWK script to highlight logs in console while we "tail" our logs.
 
 {% highlight css %}

@@ -9,10 +9,10 @@ disqus_shortname: manasvigupta
 owner:
   name:           Manasvi Gupta
   avatar:         mg_bio-photo.jpg
-  bio:            "Open Source, Startups, Machine Learning, Functional Programming"
+  bio:            "Apache Kafka, Spark, Scala"
   email:          manasvigupta@yahoo.co.in
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter:        "fatbabyin"
+  twitter:        "manasvigupta"
   facebook:       "manasvi.gupta1"
   github:         "manasvigupta"    
   stackoverflow: 

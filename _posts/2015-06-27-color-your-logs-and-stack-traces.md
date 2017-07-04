@@ -75,21 +75,21 @@ tail -f application.log | awk '
 # Initialize variables with color to be used in terminal
   BEGIN { RED="\033[0;31m"; 
           BLACK="\033[39m"; 
-          YELLOW="\033[33m"; 
+          YELLOW="\033[33m";
           LIGHT_GREEN="\033[1;32m"
   }
 
 # Identify WARNings and show in Yellow
-  /WARN/ {print YELLOW $0; next}
+  /WARN/ {p=1} p && /INFO|ERROR|DEBUG/ {p=0};p {print YELLOW \$0 reset; next}
   
 # Identify  INFOrmatin and show in Green
   /INFO/ {print LIGHT_GREEN $0; next}
   
 # Identify ERRORs, including full stack traces and show in Red  
-  /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED $0; next}
+  /ERROR/ {p=1} p && /INFO|WARN|DEBUG/ {p=0};p {print RED \$0 reset; next}
   
 # Anything not matching should be displayed with DEFAULT terminal settings
-  // {print}
+  // {print; next}
 '
 
 {% endhighlight %}

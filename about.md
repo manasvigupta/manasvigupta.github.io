@@ -18,8 +18,8 @@ I am a programmer living in Bangalore city. Through this blog, I will be documen
 My interests include - 
 
 * Functional Programming
-* Machine Learning
-* Compilers
+* Distributed Sytems
+* Open source
 
 <br/> <br/>
 

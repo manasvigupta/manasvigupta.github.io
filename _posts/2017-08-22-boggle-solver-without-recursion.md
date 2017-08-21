@@ -37,8 +37,7 @@ Typical solutions use a recursion to solve this game. Obviously, recursion will 
 
 Inspired by this [Stackoverflow] thread, I solved this puzzle using Trie & good old Breadth first search algorithm.
 
-### Solution approach & code
-
+<br/>
 You can find code at following [github] page.
 
 <br/>

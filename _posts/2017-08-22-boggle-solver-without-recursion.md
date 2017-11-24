@@ -15,7 +15,7 @@ share:
 
 ### What is Boggle?
 
-As per [wikipedia], Boggle is a word game played using a plastic grid of lettered dice, in which players attempt to find words in sequences of adjacent letters.  
+Boggle is a word game played using a plastic grid of lettered dice, in which players attempt to find words in sequences of adjacent letters.  
 
 <br/>
 Essentially, when the game starts you get a matrix of letters like so:

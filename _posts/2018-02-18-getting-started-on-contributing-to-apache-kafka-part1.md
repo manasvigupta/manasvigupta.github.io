@@ -19,7 +19,7 @@ In this post, we will be doing these activities -
 2. download apache kafka source code
 3. run/debug kafka from source
 
-For this setup, I am assuming that you are using Ubuntu 16.04 or hihger.
+For this setup, I am assuming that you are using **Ubuntu 16.04** or hihger.
 
 ### Install necessary software
 
@@ -60,7 +60,7 @@ sudo snap install intellij-idea-community --classic --edge
 intellij-idea-community
 {% endhighlight %}
 
-Make sure you have installed following plugins - Scala, Gradle, JUnit
+**Make sure you have installed following plugins - Scala, Gradle, JUnit**
 
 ### Setup Apache Kafka source code
 * Create a new github account, if you don't have one already.
@@ -81,9 +81,8 @@ gradle
 ### Import Kafka projects into Intellij IDEA
 * Start IntelliJ IDEA using cmd - `intellij-idea-community`
 * Click on "Import Project" and browse to Kafka source folder
-* Make sure you import by selecting - "Import using external model > Gradle"
-* Wait for import to complete
-* Now, build project
+* Make sure you import by selecting - **"Import using external model > Gradle"**
+* Wait for import to complete. Now, build project
 * Verify that build is successful (you may see warning which can be ignored)
 
 

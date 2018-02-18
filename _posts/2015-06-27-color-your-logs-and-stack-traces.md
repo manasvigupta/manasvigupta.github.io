@@ -3,6 +3,7 @@ layout: post
 title: "Color Your Logs And Stack Traces"
 description: "How to color application logs on Unix terminal  using tail and AWK"
 modified: 2015-06-27 00:02:36 +0530
+permalink: /color-your-logs-and-stacktraces/
 #category: [blog]
 tags: [learning, programming]
 #image:

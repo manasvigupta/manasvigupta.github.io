@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Maven and Sun jars"
+title: "Add Sun jars to your Maven repository"
 description: "How to add Sun jars to your maven repository"
 modified: 2014-04-13 20:46:05 +0530
+permalink: /add-sun-jars-to-your-maven-repo/
 #category: []
 tags: [programming, learning]
 #image:

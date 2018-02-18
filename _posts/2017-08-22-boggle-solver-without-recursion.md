@@ -3,6 +3,7 @@ layout: post
 title: "Boggle solver without Recursion"
 description: "In which I show code that solves Boogle (game) without using any recursion"
 modified: 2017-08-22 00:02:36 +0530
+permalink: /color-your-logs-and-stacktraces/
 #category: [blog]
 tags: [data-structures, algorithms]
 #image:

@@ -34,7 +34,7 @@ td{
 }
 </style>
 
-|  | Apache Kafka | Traditional Message Brokers |
+|  | Apache Kafka | Traditional Message Brokers (e.g. JMS, ActiveMQ) |
 |:--------:|:--------:|:-------:|
 |----
 | ***Design (client vs broker)*** | Kafka is __client-centric__, with the client taking over many of the functions of a traditional broker, such as fair distribution of related messages to consumers, in return for an extremely fast and scalable broker.  | The JMS model is very __broker-centric__, where the broker is responsible for the distribution of messages, and clients only have to worry about sending and receiving messages.   |

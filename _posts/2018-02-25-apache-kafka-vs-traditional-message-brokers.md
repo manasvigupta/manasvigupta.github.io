@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Apache Kafka vs Traditional Message brokers"
-description: "This post is a summary of key differences between Apache Kafka and Traditional message brokers (e.g JMS, ActiveMQ)"
+description: "Summary of key differences between Apache Kafka and Traditional message brokers (e.g JMS, ActiveMQ)"
 modified: 2018-02-25 20:41:33 +0530
 permalink: /apache-kafka-vs-traditional-message-brokers/
 #category: []

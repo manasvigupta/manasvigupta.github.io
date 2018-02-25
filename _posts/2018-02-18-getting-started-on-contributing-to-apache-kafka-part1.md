@@ -5,7 +5,7 @@ description: "In this blog post we will setup tools necessary to run Apache Kafk
 modified: 2018-02-18 20:41:33 +0530
 permalink: /getting-started-on-contributing-to-apache-kafka-part1-setup-tools-and-source-code/
 #category: []
-tags: []
+tags: [apache-kafka]
 image:
   feature: 
   credit: 

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Boggle solver without Recursion"
+title: "Solving Boggle game without using recursion"
 description: "In which I show code that solves Boogle (game) without using any recursion"
 modified: 2017-08-22 00:02:36 +0530
-permalink: /boggle-solver-without-Recursion/
+permalink: /solving-boggle-game-without-using-recursion/
 #category: [blog]
 tags: [data-structures, algorithms]
 #image:
@@ -34,7 +34,7 @@ The goal of the game is to find as many words as you can that can be formed by c
 
 Typical solutions use a recursion to solve this game. Obviously, recursion will be limited by stack depth.
 
-### Solve without recursion
+### Avoiding recursion
 
 Inspired by this [Stackoverflow] thread, I solved this puzzle using Trie & good old Breadth first search algorithm.
 

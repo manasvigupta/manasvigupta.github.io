@@ -14,7 +14,7 @@ comments: true
 share: 
 ---
 
-In this post, we are going to look at some key differences between Apache Kafka and Traditional message brokers (e.g  JMS, ActiveMQ).
+In this post, we are going to look at some key differences between ***Apache Kafka*** and Traditional message brokers ***(e.g  JMS, ActiveMQ)***.
 
 ### 1. Design
 __Apache Kafka :__ ***client-centric***, with the client taking over many of the functions of a traditional broker, such as fair distribution of related messages to consumers, in return for an extremely fast and scalable broker.

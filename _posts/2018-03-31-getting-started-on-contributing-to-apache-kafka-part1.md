@@ -152,6 +152,13 @@ This is another message
 
 If you have each of the above commands running in a different terminal then you should now be able to type messages into the producer terminal and see them appear in the consumer terminal.
 
+### 8. la fin
+That's it. You will now be able to run Kafka from source & debug it at your convinience.
+
+<br/>
+In __part 2__, we will learn to identify starter (i.e. beginner) bugs in Kafka, fix locally & test. Also, we will look at Kafka code review & change submission process.
+
+
 [Apache Kafka]:https://github.com/apache/kafka
 [IntelliJ IDEA for Ubuntu 16.04]:https://blog.jetbrains.com/idea/2017/11/install-intellij-idea-with-snaps/
 

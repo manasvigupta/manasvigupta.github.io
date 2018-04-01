@@ -17,7 +17,7 @@ share:
 If you always wanted to contribute to Apache Kafka, but, didn't know where to begin, then, you have come to the right place.
 
 <br/>
-In this two-part series, I will guide you through this process (based on my learnings after I had contributed to Apache Kafka).
+In this two-part series, I will guide you through this process (based on my learnings in the process of contributing to Apache Kafka).
 
 <br/>
 **Part 1 (current post)** - Install tools needed to run Kafka from source code.
@@ -28,7 +28,7 @@ In this two-part series, I will guide you through this process (based on my lear
 So, lets begin with our journey.
 
 <br/>
-In this post, we will be execute following steps - 
+In this post, we will be executing following steps - 
 1. setup necessary software/tools
 2. download apache kafka source code
 3. run/debug kafka from source

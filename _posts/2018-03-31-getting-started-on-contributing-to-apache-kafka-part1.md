@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Getting started on contributing to Apache Kafka (Part 1): Setup tools and source code"
+title: "Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code"
 description: "In this blog post we will setup tools necessary to run Apache Kafka from source code"
 modified: 2018-03-31 20:41:33 +0530
-permalink: /getting-started-on-contributing-to-apache-kafka-part1-setup-tools-and-source-code/
+permalink: /getting-started-with-contributing-to-apache-kafka-part1-build-and-run-kafka-from-source-code/
 #category: []
 tags: [apache-kafka]
 image:
@@ -22,7 +22,7 @@ In this two-part series, I will guide you through this process (based on my lear
 <br/>
 **Part 1 (current post)** - Install tools needed to run Kafka from source code.
 <br/><br/>
-**Part 2 (upcoming blog post)** - Identify starter (i.e. beginner) bugs in Kafka, fix locally & test. Also, we will look at Kafka code review & change submission process.
+**Part 2 (upcoming blog post)** - Identify starter (i.e. beginner) bugs in Kafka, fix locally & test. Also, we will look at Kafka code review & code submission process.
 
 <br/>
 So, lets begin with our journey.
@@ -73,7 +73,7 @@ Refer to [IntelliJ IDEA for Ubuntu 16.04] for detailed installation steps.
 > intellij-idea-community
 {% endhighlight %}
 
-Also make sure you have installed following intellij plugins - **Scala, Gradle, JUnit**
+Also make sure you have installed following Intellij plugins - **Scala, Gradle, JUnit**
 
 ### 2. Download Kafka source code
 1. Create a new github account, if you don't have one already
@@ -101,7 +101,6 @@ Execute following commands in terminal:
 4. Now, build project and __verify that build is successful__ (warnings can be ignored)
 
 ### 5. Run Zookeeper
-
 Since Kafka depends on Zookeeper, we need to run it first. In a new terminal, execute following commands:
 
 {% highlight text %}
@@ -123,7 +122,6 @@ Since Kafka depends on Zookeeper, we need to run it first. In a new terminal, ex
 5. Also, in terminal where Zookeeper is running, you will see logs indicating that Kafka has connected to Zookeeper.
 
 ### 7. Testing Kafka setup
-
 Create a new topic named "test" with a single partition and only one replica:
 
 {% highlight text %}

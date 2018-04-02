@@ -31,7 +31,7 @@ So, lets begin with our journey.
 In this post, we will be executing following steps - 
 1. setup necessary software/tools
 2. download apache kafka source code
-3. run/debug kafka from source
+3. run/debug Apache Kafka from source
 
 For this setup, I am assuming that you are using **Ubuntu 16.04** or higher.
 
@@ -151,7 +151,7 @@ This is another message
 If you have each of the above commands running in a different terminal then you should now be able to type messages into the producer terminal and see them appear in the consumer terminal.
 
 ### 8. la fin
-That's it. You will now be able to run Kafka from source & debug it at your convinience.
+That's it. You will now be able to run Kafka from source & debug it at your convenience.
 
 <br/>
 In __part 2__, we will learn to identify starter (i.e. beginner) bugs in Kafka, fix locally & test. Also, we will look at Kafka code review & change submission process.

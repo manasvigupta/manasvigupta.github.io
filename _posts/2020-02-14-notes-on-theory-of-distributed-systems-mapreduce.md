@@ -19,14 +19,15 @@ share:
 
 ## Background
 So I am going through MIT 6.824 - distributed systems course, and, lec 1 covers MapReduce.
-<br/>
+
+<br/><br/>
 
 These are my notes from Google's classic paper - [MapReduce: Simplified Data Processing on Large Clusters].
 
 
 ## Introduction
 MapReduce is a programming model and an associated implementation **for processing and generating large data sets.**
-<br/>
+<br/><br/>
 
 Users specify -
 *   a **map function** that processes a key/value pair to **generate** a set of intermediate key/value pairs, and
@@ -74,13 +75,13 @@ In addition, the user writes code to fill in a **mapreduce specification object 
 
  - **Distributed Grep**
 
-  - **Count of URL Access Frequency:** The map function processes logs of web page requests and outputs <URL, 1>. The reduce function adds together all values for the same URL and emits a <URL, total count> pair. 
+ - **Count of URL Access Frequency:** The map function processes logs of web page requests and outputs <URL, 1>. The reduce function adds together all values for the same URL and emits a <URL, total count> pair. 
  
-  - **Reverse Web-Link Graph:** The map function outputs h target, source i pairs for each link to a target URL found in a page named source. The reduce function concatenates the list of all source URLs associated with a given target URL and emits the pair: <target, list(source)>
+ - **Reverse Web-Link Graph:** The map function outputs h target, source i pairs for each link to a target URL found in a page named source. The reduce function concatenates the list of all source URLs associated with a given target URL and emits the pair: <target, list(source)>
 
-- **Term-Vector per Host:** A term vector summarizes the most important words that occur in a document or a set of documents as a list of <word, frequency> pairs. The map function emits a <hostname, term vector> pair for each input document (where the hostname is extracted from the URL of the document). The reduce function is passed all per-document term vectors for a given host. It adds these term vectors together, throwing away infrequent terms, and then emits a final <hostname, term vector> pair.
+ - **Term-Vector per Host:** A term vector summarizes the most important words that occur in a document or a set of documents as a list of <word, frequency> pairs. The map function emits a <hostname, term vector> pair for each input document (where the hostname is extracted from the URL of the document). The reduce function is passed all per-document term vectors for a given host. It adds these term vectors together, throwing away infrequent terms, and then emits a final <hostname, term vector> pair.
     
-- **Inverted Index:** The map function parses each document, and emits a sequence of hword, document IDi pairs. The reduce function accepts all pairs for a given word, sorts the corresponding document IDs and emits a hword, list(document ID)i pair. The set of all output pairs forms a simple inverted index. It is easy to augment this computation to keep track of word positions.
+ - **Inverted Index:** The map function parses each document, and emits a sequence of hword, document IDi pairs. The reduce function accepts all pairs for a given word, sorts the corresponding document IDs and emits a hword, list(document ID)i pair. The set of all output pairs forms a simple inverted index. It is easy to augment this computation to keep track of word positions.
   
 ![](https://www.evernote.com/shard/s7/res/1949e8d9-ff89-4fdb-aa8d-29e3e68825b7.jpg?search=mapreduce)
 
@@ -90,43 +91,41 @@ In addition, the user writes code to fill in a **mapreduce specification object 
 An implementation targeted to the computing environment in wide use at Google: **large clusters of commodity PCs connected together with switched Ethernet.**
 
 ### 1. Execution Overview
- 1. The Map invocations are distributed across multiple machines by automatically **partitioning the input data into a set of M splits. **The input splits can be processed in parallel by different machines.
- 2. Reduce invocations are distributed by **partitioning the intermediate key space into R pieces using a partitioning function** (e.g., hash(key) mod R). The number of partitions (R) and the partitioning function are specified by the user. 
+ - The Map invocations are distributed across multiple machines by automatically **partitioning the input data into a set of M splits. **The input splits can be processed in parallel by different machines.
+ - Reduce invocations are distributed by **partitioning the intermediate key space into R pieces using a partitioning function** (e.g., hash(key) mod R). The number of partitions (R) and the partitioning function are specified by the user. 
 
-**Map phase**
-1.  The MapReduce library in the user program first **splits the input files into M pieces of typically 16 megabytes to 64 megabytes** (MB) per piece (controllable by the user via an optional parameter). It then starts up many copies of the program on a cluster of machines.
+__Map phase__
+1. The MapReduce library in the user program first **splits the input files into M pieces of typically 16 megabytes to 64 megabytes** (MB) per piece (controllable by the user via an optional parameter). It then starts up many copies of the program on a cluster of machines.
 2.  One of the copies of the program is special – the master. The rest are workers that are assigned work by the master. **There are M map tasks and R reduce tasks to assign.** The master picks idle workers and assigns each one a map task or a reduce task.
 3.  A worker who is assigned a **map task reads the contents of the corresponding input split.** It parses key/value pairs out of the input data and passes each pair to the user-defined Map function. The **intermediate key/value pairs** produced by the Map function **are buffered in memory.**
 
-**Shuffle phase**
-
+__Shuffle phase__
 4.  **Periodically, the buffered pairs are written to local disk, partitioned into \*\*\*R regions\*\*\* by the partitioning function.**
 5. **The locations of these buffered pairs on the local disk are passed back to the master, who is responsible for forwarding these locations to the reduce workers.**
 6.  When a reduce worker is notified by the master about these locations, it uses remote procedure calls to read the buffered data from the local disks of the map workers. When a reduce worker has read all intermediate data, **it sorts it by the intermediate keys so that all occurrences of the same key are grouped together.** The sorting is needed because typically many different keys map to the same reduce task. **If the amount of intermediate data is too large to fit in memory, an external sort is used.**
 
 **Reduce phase**
-6.  The reduce worker iterates over the sorted intermediate data and for each unique intermediate key encountered, it passes the key and the corresponding set of intermediate values to the user’s Reduce function. The **output of the Reduce function is appended to a final output file** for this reduce partition.
+7.  The reduce worker iterates over the sorted intermediate data and for each unique intermediate key encountered, it passes the key and the corresponding set of intermediate values to the user’s Reduce function. The **output of the Reduce function is appended to a final output file** for this reduce partition.
 
 **Finally**
-7.  When all map tasks and reduce tasks have been completed, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.  
+8.  When all map tasks and reduce tasks have been completed, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.
 
 > **reduce -> creates one file**
 <br/>
 > **map -> creates R files (one per reduce task)**
 
 9. After successful completion, the output of the mapreduce execution is available in the R output files (one per reduce task, with file names as specified by the user).**
-
 10. Typically, users do not need to combine these R output files into one file – they often pass these files as input to another MapReduce call, or use them from another distributed application that is able to deal with input that is partitioned into multiple files. 
 
 ###  2. Master Data Structures
 The master keeps several data structures. For each map task and reduce task -
 - it stores the **state (idle, in-progress, or completed)**, and
 - the **identity of the worker machine** (for non-idle tasks).
- - for each completed map task, the master stores the **locations and sizes of the R intermediate file regions produced by the map task**. Updates to this location and size information are received as map tasks are completed. The information is pushed incrementally to workers that have in-progress reduce tasks.
+- for each completed map task, the master stores the **locations and sizes of the R intermediate file regions produced by the map task**. Updates to this location and size information are received as map tasks are completed. The information is pushed incrementally to workers that have in-progress reduce tasks.
 
 ### 3. Fault Tolerance
 **Worker Failure**
- - The master pings every worker periodically. If no response is received from a worker in a certain amount of time, the master marks the worker as failed.  
+ - The master pings every worker periodically. If no response is received from a worker in a certain amount of time, the master marks the worker as failed.
  - **Any map tasks completed by the worker are reset back to their initial idle state,** and therefore become eligible for scheduling on other workers. 
 
 > - Completed map tasks are re-executed on a failure **because their output is stored on the local disk(s) of the failed machine and is  therefore inaccessible.**
@@ -137,15 +136,10 @@ The master keeps several data structures. For each map task and reduce task -
 **Master Failure**
 - **It is easy to make the master write periodic checkpoints of the master data structures described above. If the master task dies, a new copy can be started from the last checkpointed state.** 
 - However, given that there is only a single master, its failure is unlikely; therefore our current implementation aborts the MapReduce computation if the master fails. Clients can check for this condition and retry the MapReduce operation if they desire.
-
 - When the user-supplied **map and reduce operators are deterministic functions of their input values**, our distributed implementation produces the same output as would have been produced **by a non-faulting sequential execution** of the entire program.
- 
 - We **rely on atomic commits of map and reduce task** outputs to achieve this property.
-
 - Each in-progress task writes its output to private temporary files. **A reduce task produces one such file, and a map task produces R such files (one per reduce task).**
-    
 - When a map task completes, the worker sends a message to the master and includes the names of the R temporary files in the message. Master records the names of R files in a master data structure.
-    
 - **When a reduce task completes, the reduce worker atomically renames its temporary output file to the final output file.** If the same reduce task is executed on multiple machines, multiple rename calls will be executed for the same final output file. We rely on the atomic rename operation provided by the underlying file system to guarantee that the final file system state contains just the data produced by one execution of the reduce task.
 
 ### 4. Locality
@@ -158,7 +152,7 @@ The master keeps several data structures. For each map task and reduce task -
 - Ideally, **M and R should be much larger than the number of worker machines.**
     * Having each worker perform many different tasks improves dynamic load balancing,
     * and also speeds up recovery when a worker fails
- - Bounds on M and R
+- Bounds on M and R
 - **master must make O(M + R) scheduling decisions and keeps O(M ∗ R) state in memory**
  - **R is often constrained by users because the output of each reduce task ends up in a separate output file**
 - In practice, we tend to choose M so that each individual task is roughly 16 MB to 64 MB of input data (so that the locality optimization described above is most effective), and we make R a small multiple of the number of worker machines we expect to use. We often perform MapReduce computations with M = 200, 000 and R = 5, 000, using 2,000 worker machines.
@@ -180,9 +174,12 @@ The users of MapReduce specify the number of reduce tasks/output files that they
 
 **In some cases, however, it is useful to partition data by some other function of the key. For example, sometimes the output keys are URLs, and we want all entries for a single host to end up in the same output file. To support situations like this, the user of the MapReduce library can provide a special partitioning function. For example, using “hash(Hostname(urlkey)) mod R” as the partitioning function causes all URLs from the same host to end up in the same output file.
 
+<br/><br/>
 __b. Ordering Guarantees__
 
 **We guarantee that within a given partition, the intermediate key/value pairs are processed in increasing key order.**  This ordering guarantee makes it easy to generate a sorted output file per partition, which is useful when the output file format needs to support efficient random access lookups by key, or users of the output find it convenient to have the data sorted.
+
+<br/><br/>
 
 __c. Combiner Function__
 
@@ -197,16 +194,19 @@ e.g. Since word frequencies tend to follow a Zipf distribution, each map task wi
 - The output of a **combiner function is written to an intermediate file that will be sent to a reduce task.**
     
 **Partial combining significantly speeds up certain classes of MapReduce operations.**
+<br/><br/>
 
 __d. Input and Output Types__
 The MapReduce library provides support for reading input data in several different formats.
  1. “text” - each line as a key/value pair 
  2. reader interface - add support for a new input type 
  3. easy to define a reader that **reads records from a database, or from data structures mapped in memory**
+<br/><br/>
 
 __e. Side Effects__
 - users of MapReduce have found it convenient to **produce auxiliary files as additional outputs from their map and/or reduce operators.**
 - **rely on the application writer to make such side-effects atomic and idempotent.**
+<br/><br/>
     
 __f. Skipping Bad Records__
 - Certain records can crash Map & Reduce functions
@@ -217,6 +217,7 @@ Can fix bug but sometimes not feasible.
 Solution - provide an optional mode of execution where the **MapReduce library detects which records cause deterministic crashes and skips these records** in order to make forward progress.
 
 Each worker process installs a signal handler that catches segmentation violations and bus errors. Before invoking a user Map or Reduce operation, the MapReduce library stores the sequence number of the argument in a global variable. If the user code generates a signal, the signal handler sends a “last gasp” UDP packet that contains the sequence number to the MapReduce master. When the master has seen more than one failure on a particular record, it indicates that the record should be skipped when it issues the next re-execution of the corresponding Map or Reduce task.
+<br/><br/>
 
 __g. Local Execution__
 
@@ -226,7 +227,7 @@ To help facilitate debugging, profiling, and small-scale testing, we have develo
 The master runs an internal HTTP server and exports a set of status pages for human consumption, which shows
 the progress of the computation, such as - 
 
- 1. how many tasks have been completed,
+  1. how many tasks have been completed,
   2.  how many are in progress,
   3.  bytes of input,
   4.  bytes of intermediate data,
@@ -237,6 +238,7 @@ the progress of the computation, such as -
 ### 9. Counters
 The MapReduce library provides a counter facility to count occurrences of various events. To use this facility, user code creates a named counter object and then increments the counter appropriately in the Map and/or Reduce function.
 
+{% highlight java %}
     Counter\* uppercase;
     uppercase = GetCounter("uppercase");
     
@@ -244,11 +246,13 @@ The MapReduce library provides a counter facility to count occurrences of variou
          for each word w in contents:
              if (IsCapitalized(w)):
                  uppercase->Increment();
-             EmitIntermediate(w, "1"); 
+             EmitIntermediate(w, "1");
+{% endhighlight %}
 
- - **The counter values from individual worker machines are periodically propagated to the master (piggybacked on the ping response). The master aggregates the counter values from successful map and reduce tasks and returns them to the user code when the MapReduce operation is completed.**
+**The counter values from individual worker machines are periodically propagated to the master (piggybacked on the ping response). The master aggregates the counter values from successful map and reduce tasks and returns them to the user code when the MapReduce operation is completed.**
+<br/>
  
-- Some counter values are automatically maintained by the MapReduce library, such as the number of input key/value pairs processed and the number of output key/value pairs produced.  
+Some counter values are automatically maintained by the MapReduce library, such as the number of input key/value pairs processed and the number of output key/value pairs produced.  
 
  __Usage__
 - Users have found the counter facility useful for sanity checking the behavior of MapReduce operations. For example, in some MapReduce operations, the user code may want to ensure that the number of output pairs produced exactly equals the number of input pairs processed,

@@ -26,12 +26,15 @@ These are my notes from Google's classic paper - [MapReduce: Simplified Data Pro
 
 ## Introduction
 MapReduce is a programming model and an associated implementation **for processing and generating large data sets.**
+<br/>
 
 Users specify -
 *   a **map function** that processes a key/value pair to **generate** a set of intermediate key/value pairs, and
 *   a **reduce function** that **merges** all intermediate values associated with the same intermediate key.
 
 Many real world tasks are expressible in this model, as shown in the paper.
+
+<br/>
   
 __**Advantage**__
 1.  The **run-time system takes care** of the details of partitioning the input data, scheduling the program’s execution across a set of machines, handling machine failures, and managing the required inter-machine communication.
@@ -39,19 +42,23 @@ __**Advantage**__
 
 **" a new abstraction that allows us to express the simple computations we were trying to perform but hides the messy details of parallelization, fault-tolerance, data distribution and load balancing in a library."**
 
- inspired by the map and reduce primitives present in Lisp and many other functional languages.
+<br/>
+inspired by the map and reduce primitives present in Lisp and many other functional languages.
 
 ## Programming Model
 **map (k1,v1) → list(k2,v2)**
 
+{% highlight java %}
     map(String key, String value):
         // key: document name
         // value: document contents
         for each word w in value:
              EmitIntermediate(w, "1"); 
+{% endhighlight %}
 
 **reduce (k2,list(v2)) → list(v2)**
 
+{% highlight java %}
        reduce(String key, Iterator values):
     		    // key: a word
     		    // values: a list of counts
@@ -59,6 +66,7 @@ __**Advantage**__
     		    for each v in values:
     		         result += ParseInt(v);
     		    Emit(AsString(result));
+{% endhighlight %}
 
 In addition, the user writes code to fill in a **mapreduce specification object with the names of the input and output files**, and optional tuning parameters. The user then invokes the MapReduce function, passing it the specification object.
 
@@ -92,8 +100,9 @@ An implementation targeted to the computing environment in wide use at Google: *
 
 **Shuffle phase**
 
-4.  **Periodically, the buffered pairs are written to local disk, partitioned into \*\*\*R regions\*\*\* by the partitioning function. The locations of these buffered pairs on the local disk are passed back to the master, who is responsible for forwarding these locations to the reduce workers.**
-5.  When a reduce worker is notified by the master about these locations, it uses remote procedure calls to read the buffered data from the local disks of the map workers. When a reduce worker has read all intermediate data, **it sorts it by the intermediate keys so that all occurrences of the same key are grouped together.** The sorting is needed because typically many different keys map to the same reduce task. **If the amount of intermediate data is too large to fit in memory, an external sort is used.**
+4.  **Periodically, the buffered pairs are written to local disk, partitioned into \*\*\*R regions\*\*\* by the partitioning function.**
+5. **The locations of these buffered pairs on the local disk are passed back to the master, who is responsible for forwarding these locations to the reduce workers.**
+6.  When a reduce worker is notified by the master about these locations, it uses remote procedure calls to read the buffered data from the local disks of the map workers. When a reduce worker has read all intermediate data, **it sorts it by the intermediate keys so that all occurrences of the same key are grouped together.** The sorting is needed because typically many different keys map to the same reduce task. **If the amount of intermediate data is too large to fit in memory, an external sort is used.**
 
 **Reduce phase**
 6.  The reduce worker iterates over the sorted intermediate data and for each unique intermediate key encountered, it passes the key and the corresponding set of intermediate values to the user’s Reduce function. The **output of the Reduce function is appended to a final output file** for this reduce partition.
@@ -102,6 +111,7 @@ An implementation targeted to the computing environment in wide use at Google: *
 7.  When all map tasks and reduce tasks have been completed, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.  
 
 > **reduce -> creates one file**
+<br/>
 > **map -> creates R files (one per reduce task)**
 
 9. After successful completion, the output of the mapreduce execution is available in the R output files (one per reduce task, with file names as specified by the user).**
@@ -122,7 +132,7 @@ The master keeps several data structures. For each map task and reduce task -
 > - Completed map tasks are re-executed on a failure **because their output is stored on the local disk(s) of the failed machine and is  therefore inaccessible.**
 > - Completed reduce tasks **do not need to be re-executed** since their output is stored in a global file system.
 > -  When a map task is executed first by worker A and then later executed by worker B (because A failed), all workers executing reduce tasks are notified of the re-execution. Any reduce task that has not already read the data from worker A will read the data from worker B.
-- Similarly, any map task or reduce task in progress on a failed worker is also reset to idle and becomes eligible for rescheduling.  
+- Similarly, any map task or reduce task in progress on a failed worker is also reset to idle and becomes eligible for rescheduling.
     
 **Master Failure**
 - **It is easy to make the master write periodic checkpoints of the master data structures described above. If the master task dies, a new copy can be started from the last checkpointed state.** 
@@ -130,9 +140,9 @@ The master keeps several data structures. For each map task and reduce task -
 
 - When the user-supplied **map and reduce operators are deterministic functions of their input values**, our distributed implementation produces the same output as would have been produced **by a non-faulting sequential execution** of the entire program.
  
-- We **rely on atomic commits of map and reduce task** outputs to achieve this property.  
+- We **rely on atomic commits of map and reduce task** outputs to achieve this property.
 
-- Each in-progress task writes its output to private temporary files. **A reduce task produces one such file, and a map task produces R such files (one per reduce task).**  
+- Each in-progress task writes its output to private temporary files. **A reduce task produces one such file, and a map task produces R such files (one per reduce task).**
     
 - When a map task completes, the worker sends a message to the master and includes the names of the R temporary files in the message. Master records the names of R files in a master data structure.
     
